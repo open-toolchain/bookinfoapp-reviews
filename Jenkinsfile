@@ -6,4 +6,5 @@ microserviceBuilderPipeline {
   build = 'true'
   test = 'false'
   deploy = 'false'
+  registry = 'mk-cluster.icp:8500/default'
 }
