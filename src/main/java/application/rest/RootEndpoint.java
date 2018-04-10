@@ -142,7 +142,7 @@ public class RootEndpoint {
         int starsReviewer2 = -1;
 
         if (ratings_enabled) {
-                System.out.println("MK: reviews calling getRatings()"");
+                System.out.println("MK: reviews calling getRatings()");
                 JsonObject ratingsResponse = getRatings(Integer.toString(productId), user, xreq, xtraceid, xspanid, xparentspanid, xsampled, xflags, xotspan);
             if (ratingsResponse != null) {
                 if (ratingsResponse.containsKey("ratings")) {
