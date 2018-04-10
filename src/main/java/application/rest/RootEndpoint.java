@@ -75,24 +75,31 @@ public class RootEndpoint {
         WebTarget ratingsTarget = client.target(ratings_service + "/" + productId);
         Invocation.Builder builder = ratingsTarget.request(MediaType.APPLICATION_JSON);
         if(xreq!=null) {
+            System.out.println("MK: forward header 'x-request-id: " + xreq + "'");
             builder.header("x-request-id",xreq);
         }
         if(xtraceid!=null) {
+            System.out.println("MK: forward header 'x-b3-traceid: " + xtraceid + "'");
             builder.header("x-b3-traceid",xtraceid);
         }
         if(xspanid!=null) {
+            System.out.println("MK: forward header 'x-b3-spanid: " + xspanid + "'");
             builder.header("x-b3-spanid",xspanid);
         }
         if(xparentspanid!=null) {
+            System.out.println("MK: forward header 'x-b3-parentspanid: " + xparentspanid + "'");
             builder.header("x-b3-parentspanid",xparentspanid);
         }
         if(xsampled!=null) {
+            System.out.println("MK: forward header 'x-b3-sampled: " + xsampled + "'");
             builder.header("x-b3-sampled",xsampled);
         }
         if(xflags!=null) {
+            System.out.println("MK: forward header 'x-b3-flags: " + xflags + "'");
             builder.header("x-b3-flags",xflags);
         }
         if(xotspan!=null) {
+            System.out.println("MK: forward header 'x-ot-span-context: " + xotspan + "'");
             builder.header("x-ot-span-context",xotspan);
         }
         if(user!=null) {
@@ -135,6 +142,7 @@ public class RootEndpoint {
         int starsReviewer2 = -1;
 
         if (ratings_enabled) {
+                System.out.println("MK: reviews calling getRatings()"");
                 JsonObject ratingsResponse = getRatings(Integer.toString(productId), user, xreq, xtraceid, xspanid, xparentspanid, xsampled, xflags, xotspan);
             if (ratingsResponse != null) {
                 if (ratingsResponse.containsKey("ratings")) {
