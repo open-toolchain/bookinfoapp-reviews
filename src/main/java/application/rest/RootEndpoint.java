@@ -160,13 +160,13 @@ public class RootEndpoint {
         String jsonResStr = getJsonResponse(Integer.toString(productId), starsReviewer1, starsReviewer2);
         System.out.println("MK: jsonResStr is: " + jsonResStr);
 
-		if (star_color.equals("red")) {
-            // reviews-v3 will have a delay
-            try {
-                Thread.sleep(5000);
-            } catch (Exception e) {
-            }
-        }
+		// if (star_color.equals("red")) {
+        //     // reviews-v3 will have a delay
+        //     try {
+        //         Thread.sleep(5000);
+        //     } catch (Exception e) {
+        //     }
+        // }
 
         return Response.ok().type(MediaType.APPLICATION_JSON).entity(jsonResStr).build();
         //return Response.ok("reviews are cool").build();
