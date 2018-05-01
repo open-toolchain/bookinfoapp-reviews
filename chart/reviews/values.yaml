@@ -34,3 +34,5 @@ base:
 istio:
   enabled: false
   weight: 100
+versions:
+  enabled: false

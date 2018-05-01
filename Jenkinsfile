@@ -5,5 +5,6 @@ microserviceBuilderPipeline {
   image = 'reviews'
   build = 'true'
   test = 'false'
-  deploy = 'false'
+  deploy = 'true'
+  deployVersions = 'true'
 }

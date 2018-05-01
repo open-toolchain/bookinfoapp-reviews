@@ -4,6 +4,7 @@ metadata:
   name: "{{  .Chart.Name }}"
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    chart-use: once
     app: "{{ .Chart.Name }}"
 spec:
   type: {{ .Values.service.type }}
