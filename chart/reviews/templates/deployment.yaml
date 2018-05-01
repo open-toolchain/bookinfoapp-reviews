@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: "{{  .Chart.Name }}"
+        image: "{{ .Values.image.tag }}"
         version: {{ if .Values.versions.enabled}} "{{ .Values.versions.version }}" {{ else }} "current" {{ end }}
     spec:
       containers:
