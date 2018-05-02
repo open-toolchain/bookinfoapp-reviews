@@ -12,7 +12,10 @@ spec:
       labels:
         app: "{{  .Chart.Name }}"
         image: "{{ .Values.image.tag }}"
-        version: {{ if .Values.versions.enabled}} "{{ .Values.versions.version }}" {{ else }} "current" {{ end }}
+{{- if .Values.image.message }} 
+        commit-message: "{{ .Values.image.message }}"
+{{- end }}
+        version: {{ if .Values.versions.enabled }} "{{ .Values.versions.version }}" {{ else }} "current" {{ end }}
     spec:
       containers:
       - name: "{{  .Chart.Name  }}"
