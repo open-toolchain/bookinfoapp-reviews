@@ -24,8 +24,8 @@ import javax.ws.rs.core.Response;
 public class RootEndpoint {
 
     private final static Boolean ratings_enabled = true; // Boolean.valueOf(System.getenv("ENABLE_RATINGS"));
-    //private final static String star_color = System.getenv("STAR_COLOR") == null ? "black" : System.getenv("STAR_COLOR");
-    private final static String star_color = "red";
+    // private final static String star_color = System.getenv("STAR_COLOR") == null ? "black" : System.getenv("STAR_COLOR");
+    private final static String star_color = "green"; // red";
     private final static String ratings_service = "http://ratings:9080/ratings";
 
     private String getJsonResponse (String productId, int starsReviewer1, int starsReviewer2) {
