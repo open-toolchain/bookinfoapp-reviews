@@ -1,14 +1,25 @@
-FROM websphere-liberty:webProfile7
-MAINTAINER IBM Java engineering at IBM Cloud
-COPY /target/liberty/wlp/usr/servers/defaultServer /config/
-COPY /target/liberty/wlp/usr/shared/resources /config/resources/
-COPY /src/main/liberty/config/jvmbx.options /config/jvm.options
-RUN installUtility install --acceptLicense defaultServer
-# Upgrade to production license if URL to JAR provided
-ARG LICENSE_JAR_URL
-RUN \
-  if [ $LICENSE_JAR_URL ]; then \
-    wget $LICENSE_JAR_URL -O /tmp/license.jar \
-    && java -jar /tmp/license.jar -acceptLicense /opt/ibm \
-    && rm /tmp/license.jar; \
-  fi
+FROM gradle:4.8.1 as builder
+
+ADD --chown=gradle . /home/gradle/project
+WORKDIR /home/gradle/project
+RUN gradle clean build
+
+FROM websphere-liberty:19.0.0.4-javaee8
+
+# WORKDIR reviews-wlpcfg
+ENV SERVERDIRNAME reviews
+
+COPY --from=builder /home/gradle/project/reviews-wlpcfg/servers/LibertyProjectServer /opt/ibm/wlp/usr/servers/defaultServer/
+# ADD ./servers/LibertyProjectServer /opt/ibm/wlp/usr/servers/defaultServer/
+
+RUN /opt/ibm/wlp/bin/installUtility install  --acceptLicense /opt/ibm/wlp/usr/servers/defaultServer/server.xml
+
+ARG service_version
+#MK ARG enable_ratings
+#MK ARG star_color
+ENV SERVICE_VERSION ${service_version:-v1}
+#MK ENV ENABLE_RATINGS ${enable_ratings:-false}
+#MK ENV STAR_COLOR ${star_color:-black}
+
+CMD /opt/ibm/wlp/bin/server run defaultServer
+
