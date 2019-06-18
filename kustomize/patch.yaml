@@ -1,0 +1,19 @@
+- op: replace
+  path: /metadata/name
+  value: NAME-VERSION
+
+- op: replace
+  path: /metadata/labels/version
+  value: VERSION
+
+- op: replace
+  path: /spec/selector/matchLabels/version
+  value: VERSION
+
+- op: replace
+  path: /spec/template/metadata/labels/version
+  value: VERSION
+
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: IMAGE
