@@ -1,4 +1,4 @@
-FROM gradle:4.8.1 as builder
+FROM gradle as builder
 
 ADD --chown=gradle . /home/gradle/project
 WORKDIR /home/gradle/project
