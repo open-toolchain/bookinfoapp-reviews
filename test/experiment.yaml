@@ -1,4 +1,4 @@
-apiVersion: iter8.ibm.com/v1alpha1
+apiVersion: iter8.io/v1alpha1
 kind: Experiment 
 metadata:
   name: reviews
@@ -17,9 +17,9 @@ spec:
     maxIterations: 8 #default value = 100
     maxTrafficPercentage: 80 #default value = 50
   analysis:
-    analyticsService: "http://localhost:5555"
-    metrics:
-      - name: iter8_latency
+    analyticsService: "http://iter8-analytics.iter8"
+    successCriteria:
+      - metricName: iter8_latency
         toleranceType: threshold
         tolerance: 0.2
         sampleSize: 6
