@@ -48,7 +48,7 @@ echo "          STOP_FILE = $STOP_FILE"
 
 # validate input
 # compute values
-PIPELINERUN="bookinfo-app-master-${EXPERIMENT_ID}"
+PIPELINERUN="reviews-master-${EXPERIMENT_ID}"
 SERVICE=$(yq r ${EXPERIMENT_TEMPLATE} metadata.name)
 EXPERIMENT="${SERVICE}-${EXPERIMENT_ID}"
 
