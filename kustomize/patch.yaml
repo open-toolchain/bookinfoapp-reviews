@@ -1,6 +1,8 @@
+# This file needs to be modified for each new version deployed
+# This can be done, for example, by using create_patch.sh or by a tekton task
 - op: replace
   path: /metadata/name
-  value: NAME-VERSION
+  value: reviews-VERSION
 
 - op: replace
   path: /metadata/labels/version
@@ -16,4 +18,4 @@
 
 - op: replace
   path: /spec/template/spec/containers/0/image
-  value: IMAGE
+  value: kalantar/examples-bookinfo-reviews:VERSION
