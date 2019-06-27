@@ -57,7 +57,7 @@ while [ $timePassedS -lt $DURATION ]; do
   if [ -f ${STOP_FILE} ]; then break; fi
   sleep ${FREQUENCY}
 
-  curl $OPTIONS $URL # > /dev/null
+  curl $OPTIONS $URL | grep HTTP #> /dev/null
   COUNT=$(( $COUNT + 1 ))
 
   timePassedS=$(( $(date +%s) - $startS ))
