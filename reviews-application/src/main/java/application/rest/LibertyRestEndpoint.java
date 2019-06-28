@@ -38,13 +38,11 @@ import javax.ws.rs.core.Response;
 @Path("/")
 public class LibertyRestEndpoint extends Application {
 
-    //MK private final static Boolean ratings_enabled = Boolean.valueOf(System.getenv("ENABLE_RATINGS"));
-    private final static String star_color = "red"; //MK System.getenv("STAR_COLOR") == null ? "black" : System.getenv("STAR_COLOR");
+    private final static String star_color = "red";
     private final static String services_domain = System.getenv("SERVICES_DOMAIN") == null ? "" : ("." + System.getenv("SERVICES_DOMAIN"));
     private final static String ratings_hostname = System.getenv("RATINGS_HOSTNAME") == null ? "ratings" : System.getenv("RATINGS_HOSTNAME");
     private final static String ratings_service = "http://" + ratings_hostname + services_domain + ":9080/ratings";
 
-    //MK added
     private Boolean ratings_enabled() {
         return !star_color.equals("none");
     }
@@ -58,7 +56,7 @@ public class LibertyRestEndpoint extends Application {
     	result += "{";
     	result += "  \"reviewer\": \"Reviewer1\",";
     	result += "  \"text\": \"An extremely entertaining play by Shakespeare. The slapstick humour is refreshing!\"";
-      if (ratings_enabled()) { //MK modified
+      if (ratings_enabled()) {
         if (starsReviewer1 != -1) {
           result += ", \"rating\": {\"stars\": " + starsReviewer1 + ", \"color\": \"" + star_color + "\"}";
         }
@@ -72,7 +70,7 @@ public class LibertyRestEndpoint extends Application {
     	result += "{";
     	result += "  \"reviewer\": \"Reviewer2\",";
     	result += "  \"text\": \"Absolutely fun and entertaining. The play lacks thematic depth when compared to other plays by Shakespeare.\"";
-      if (ratings_enabled()) { //MK modified
+      if (ratings_enabled()) {
         if (starsReviewer2 != -1) {
           result += ", \"rating\": {\"stars\": " + starsReviewer2 + ", \"color\": \"" + star_color + "\"}";
         }
@@ -176,7 +174,7 @@ public class LibertyRestEndpoint extends Application {
 
       String jsonResStr = getJsonResponse(Integer.toString(productId), starsReviewer1, starsReviewer2);
 
-      //MK added
+      // optional delay of 5s based on color of star
       if (star_color.equals("yellow")) {
             try {
                   Thread.sleep(5000);
