@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: reviews
-        image: kalantar/examples-bookinfo-reviews
+        image: iter8/reviews
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
