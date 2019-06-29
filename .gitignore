@@ -1,3 +1,13 @@
 .gradle
 reviews-application/build/
 reviews-wlpcfg/servers/LibertyProjectServer/apps/
+
+.project
+.settings/
+reviews-application/.classpath
+reviews-application/.project
+reviews-application/.settings/
+reviews-application/bin/
+reviews-wlpcfg/.project
+reviews-wlpcfg/.settings/
+
