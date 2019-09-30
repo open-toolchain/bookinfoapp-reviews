@@ -4,7 +4,7 @@ ADD --chown=gradle . /home/gradle/project
 WORKDIR /home/gradle/project
 RUN gradle clean build
 
-FROM websphere-liberty:19.0.0.4-javaee8
+FROM websphere-liberty:javaee8-java11
 
 ENV SERVERDIRNAME reviews
 
