@@ -1,4 +1,8 @@
-# Bookinfo Reviews Application
+# This application repo has been deprecated and is no longer supported. It was the sample application for the Iter8-toolchain-template:
+## https://github.com/open-toolchain/iter8-toolchain-rollout
+
+
+## Bookinfo Reviews Application
 
 Created from [the source of the Istio sample Bookinfo service reviews](https://github.com/istio/istio/tree/master/samples/bookinfo/src/reviews) with the following additions and changes:
 
